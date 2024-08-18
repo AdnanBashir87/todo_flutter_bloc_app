@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389969287965",
+    "project_id": "todo-flutter-bloc-app",
+    "storage_bucket": "todo-flutter-bloc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389969287965:android:078229e3588499cfbb1ff4",
+        "android_client_info": {
+          "package_name": "com.adnanbashir.todo_flutter_bloc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx7URsJrT1sEttjB2dtlBuNXx7mQUZgNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
