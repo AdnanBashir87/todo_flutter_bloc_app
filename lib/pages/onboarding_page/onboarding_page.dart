@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todo_flutter_bloc_app/main.dart';
 import 'package:todo_flutter_bloc_app/pages/todo_page/todo_page.dart';
 
 class OnboardingPage extends StatefulWidget {

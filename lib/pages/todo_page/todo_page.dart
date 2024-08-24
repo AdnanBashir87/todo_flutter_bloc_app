@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_flutter_bloc_app/pages/todo_page/widgets/todo_widgets.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -15,17 +16,67 @@ class _TodoPageState extends State<TodoPage> {
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         backgroundColor: Colors.grey.shade100,
-        title: const Text("M Y  T O D O s"),
+        title: Text(
+          "M Y  T O D O s",
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: 4,
-        itemBuilder: (context, index) {
-          return todoContainer();
-        },
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "On Going TODOs:",
+              style: TextStyle(
+                fontSize: 24.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return todoContainer();
+                },
+              ),
+            )
+          ],
+        ),
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              backgroundColor: Colors.white,
+              shadowColor: Colors.white,
+              title: const Text("Create your task..."),
+              content: SizedBox(
+                height: 135.h,
+                child: Column(
+                  children: [
+                    todoTextField(hintText: "TODO Title"),
+                    SizedBox(height: 10.h),
+                    todoTextField(hintText: "TODO Description"),
+                  ],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Cancel")),
+                ElevatedButton(onPressed: () {}, child: const Text("Add")),
+              ],
+            ),
+          );
+        },
         style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
         child: const Text(
           "New Task",
@@ -40,8 +91,9 @@ class _TodoPageState extends State<TodoPage> {
 
 Widget todoContainer() {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    height: 100.h,
+    padding: EdgeInsets.symmetric(horizontal: 10.w),
+    margin: EdgeInsets.symmetric(vertical: 10.h),
+    height: 90.h,
     width: 375.w,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -63,12 +115,40 @@ Widget todoContainer() {
               value: false,
               onChanged: (value) {},
             ),
-            Text(
-              "Dinner",
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Dinner",
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Row(
+                  children: [
+                    Text(
+                      "08:46",
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.normal,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    SizedBox(width: 20.w),
+                    Text(
+                      "Dated: 22/08/24",
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.normal,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
